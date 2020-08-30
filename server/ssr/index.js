@@ -8,12 +8,11 @@ import templateFn from './template';
 import App from '../../src/App';
 
 const ssrRender = ({ clientStats }) => (req, res, next) => {
-  // const content = ReactDOMServer.renderToString(<App />);
   const content = ReactDOMServer.renderToString(<App />);
   const { js, styles, css, scripts } = flushChunks(clientStats, {
     chunkNames: flushChunkNames(),
     before: ['vendor', 'bootstrap'],
-    after: ['client'],
+    after: ['client']
     // outputPath: path.resolve(__dirname, '../', '../', 'dist')
   });
   console.log(js.toString());
