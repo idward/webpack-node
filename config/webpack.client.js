@@ -11,7 +11,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const config = (env) => {
   return {
     name: 'client',
-    // devtool: env !== 'local' ? false : 'cheap-module-source-map',
+    devtool: env !== 'local' ? false : 'cheap-module-source-map',
     entry: {
       client:
         env !== 'local'
@@ -23,7 +23,7 @@ const config = (env) => {
         env !== 'local' ? '[name].[hash:10].bundle.js' : '[name].bundle.js',
       // chunkFilename: '[name].js',
       path: path.resolve(__dirname, '../', 'dist'),
-      publicPath: '/',
+      publicPath: '/'
     },
     module: {
       rules: [

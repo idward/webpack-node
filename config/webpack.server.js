@@ -4,12 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ExtractCssChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+// const nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('./node-externals.js');
 
 const config = {
   name: 'server',
   target: 'node',
-  externals: nodeExternals(),
+  externals: nodeExternals, // exclude node_modules
   entry: {
     server: './server/ssr/index.js'
   },
@@ -77,6 +78,9 @@ const config = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     // new ExtractCssChunksPlugin(),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),

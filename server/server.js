@@ -18,6 +18,12 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
+app.get('/product/:title', (req, res) => {
+  const title = req.params.title || 'FFFFFF';
+  // console.log('title:', title);
+  res.send({ title });
+});
+
 if (!isProd) {
   const compiler = webpack([webpackClientDevConfig, webpackServerDevConfig]);
   const clientCompiler = compiler.compilers[0];
@@ -57,7 +63,7 @@ if (!isProd) {
       // 生产模式开启gzip压缩模式
       app.use(expressStaticGzip(path.resolve(__dirname, '../dist')));
 
-      app.use(ssrRender({clientStats}));
+      app.use(ssrRender({ clientStats }));
     }
   );
 }

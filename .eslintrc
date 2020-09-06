@@ -6,6 +6,11 @@
     "no-console": "off",
     "no-debugger": "off",
     "no-unused-vars": [1, { "argsIgnorePattern": "^_" }],
+    "no-underscore-dangle": [0],
+    "no-multi-assign": [0],
+    "no-param-reassign": [0],
+    "prefer-destructuring": [0],
+    "global-require": [0],
     "react/jsx-filename-extension": [
       1,
       {
@@ -17,6 +22,7 @@
     "react/destructuring-assignment": [0],
     "react/jsx-props-no-spreading": [0],
     "import/extensions": [2, "never"],
+    "import/prefer-default-export": [0],
     "import/no-extraneous-dependencies": [
       0,
       {
